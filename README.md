@@ -103,5 +103,6 @@ Add following line to user settings
 }
 
 User settings
+
 Now, whenever you save a file the code will be formatted using the eslint config which is airbnb in this case. Please, comment you find any better ways for doing this.
 
