@@ -43,3 +43,65 @@ Create .eslintrc file in the root directory and add the following lines
 }
 Now, you will start seeing lint errors in your code.
 
+Step 2
+
+Installing prettier for code formatting (If you have prettier plugin installed via vscode plugin, uninstall it as it causes the code formatting twice)
+
+Install prettier and related dependencies
+yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+Update .eslintrc with following lines
+
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 100
+      }
+    ]
+  },
+  "plugins": [
+    "prettier"
+  ]
+}
+
+.eslintrc file.
+Step 3
+
+VSCode user settings
+
+Add following line to user settings
+
+{
+  // other settings
+  // formatting using eslint
+  // let editor format using prettier for all other files
+  "editor.formatOnSave": true,
+  // disable editor formatting, so eslint can handle it
+  "[javascript]": {
+    "editor.formatOnSave": false,
+  },
+  // available through eslint plugin in vscode
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+}
+
+User settings
+Now, whenever you save a file the code will be formatted using the eslint config which is airbnb in this case. Please, comment you find any better ways for doing this.
+
